@@ -19,7 +19,7 @@ async function main() {
 
   const keyword_extractor = require("keyword-extractor")
 
-  query = "is acct 2301  hard"
+  query = "is barden a hard grader"
 
   const query_extraction =
   keyword_extractor.extract(query,{
@@ -83,14 +83,17 @@ async function main() {
   // Get professor's classes
   if (professor_output != null) {
     course_sections = professor_output[0].sections
+    
+    for (let i = 0; i < course_sections.length; i++) {
+      section_url = 'https://api.utdnebula.com/section/' + course_sections[i]
+      console.log(section_url)
 
-    section_url = 'https://api.utdnebula.com/section/' + course_sections[i]
-    console.log(section_url)
-
-    section_call_nebula = await call_nebula(section_url)
-    section_output = section_call_nebula.data
-    console.log(section_output)
+      section_call_nebula = await call_nebula(section_url)
+      section_output = section_call_nebula.data
+      console.log(section_output)
+    }
   }
+
   //Course prefix + number search
   course_output = null
 
