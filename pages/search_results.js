@@ -8,8 +8,9 @@ import { useEffect } from 'react'
 import { getCoursesAndProfs } from '../nebula-search'
 import { ResultType, NebulaResultCard } from '../components/NebulaResultCard'
 import Link from 'next/link'
-import {JupiterCard} from '../components/JupiterCard.jsx'
-import nebulaLogo from '../public/Images/nebula.png'
+import JupiterCard from '../components/JupiterCard.jsx'
+import nebulaLogo from '../styles/nebula.png'
+import 'semantic-ui-css/semantic.min.css'
 
 export default function Results() {
     const [query, setQuery] = useState('')
@@ -65,9 +66,18 @@ export default function Results() {
                         <JupiterCard
                             orgs = {
                                 [
-                                    {name: "Nebula", url: "https://discord.gg/uW7zuXbmJt", logo: nebulaLogo},
-                                    {name: "ACM", url: "https://discord.gg/kJmvgTnt", logo: nebulaLogo},
-                                    {name: "AIS", url: "https://discord.gg/xyW9mvTJ", logo: nebulaLogo},
+                                    {name: "Nebula", url: "https://discord.gg/afdRbJY9", logo: nebulaLogo, description: "We're a Community of open source developers making student focused products"},
+                                    {name: "ACM", url: "https://discord.gg/kJmvgTnt", logo: nebulaLogo, description: "Association of Computing Machinery"},
+                                    {name: "AIS", url: "https://discord.gg/xyW9mvTJ", logo: nebulaLogo, description: "Artificial Intelligence Society"},
+                                ]
+                            }
+                        />
+                        <GuideCard
+                            articles = {
+                                [
+                                    {title: "How to get Started at UTD", text: "'Get admitted'"},
+                                    {name: "How to ace your exams", text: "'Dont be dumb'"},
+                                    {name: "How and why you should worship our holy saviour TEMOC", text: "'Just Because'"},
                                 ]
                             }
                         />
