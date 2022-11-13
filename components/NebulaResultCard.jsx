@@ -10,27 +10,28 @@ export const ResultType = {
 
 const NebulaCourseResultCard = props => {
     const [sectionList, setSectionList] = useState([])
-    const [profList, setProfList] = useState([])
+    const [profList, setProfList] = useState(null)
     const data = props.data
 
     useEffect(() => {
-        call_nebula(
-            'https://api.utdnebula.com/section?' +
-            'course_reference=' + data._id +
-            '&academic_session.name=22F'
-        ).then(json => {
-            console.log(json.data)
-            setSectionList(json.data)
-            Promise.all(json.data.map(elem =>
-                call_nebula(
-                    'https://api.utdnebula.com/professor/' +
-                    elem.professors[0]
-                ).then(values => {
-                    setProfList(values.data)
-                })
-            ))
+        Promise.all(data.sections.map(elem =>
+            call_nebula(
+                'https://api.utdnebula.com/section/' +
+                elem
+            ).then(json => json.data)
+        )).then(values => {
+            const filtered = values.filter(elem => elem.academic_session.name == '20S')
+            setSectionList(filtered)
         })
     }, [])
+
+    useEffect(() => {
+        Promise.all(sectionList.map(elem =>
+            call_nebula(
+                'https://api.utdnebula.com/professor/' + elem.professors[0]
+            ).then(json => json.data)
+        )).then(values => setProfList(values))
+    }, [sectionList])
 
     return (
         <>
@@ -45,7 +46,7 @@ const NebulaCourseResultCard = props => {
             </p>
             <Divider className="nebula-card-divider" />
             <div className="nebula-course-card-sections">
-                {sectionList.map((elem, i) => {
+                {sectionList.map((elem, i) =>
                     (<div className="nebula-course-card-section">
                         <p className="nebula-course-card-section-num">
                             {elem.section_number}
@@ -53,14 +54,14 @@ const NebulaCourseResultCard = props => {
                         <p className="nebula-course-card-section-time">
                             {
                                 elem.meetings[0].meeting_days[0] == 'Monday' ?
-                                    (MW )
+                                    <>MW </>
                                     : elem.meetings[0].meeting_days[0] == 'Tuesday' ?
-                                        (TTh )
-                                        : (F )
+                                        <>TTh </>
+                                        : <>F </>
                             }
                             {elem.meetings[0].start_time}-{elem.meetings[0].end_time}
                         </p>
-                        {profList &&
+                        {profList[i] &&
                             <Link
                                 href={{ pathname: 'search_results', query: { query: profList[i].first_name + ' ' + profList[i].last_name } }}
                                 as={'search_results/' + profList[i].first_name + ' ' + profList[i].last_name}
@@ -71,7 +72,7 @@ const NebulaCourseResultCard = props => {
                             </Link>
                         }
                     </div>)
-                })}
+                )}
             </div>
         </>
     )

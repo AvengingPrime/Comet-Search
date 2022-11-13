@@ -31,6 +31,27 @@ a {
     padding: 1em;
 }
 
+.results-top-bar .results-title {
+    font-size: 3rem;
+    margin-top: .5rem;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.results-title *:hover {
+    text-decoration: none;
+}
+
+.results-title *:not(.comet) {
+    color: white;
+}
+
+.results-main {
+    display: grid;
+    grid-template-columns: 60% 30%;
+    gap: 2rem;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

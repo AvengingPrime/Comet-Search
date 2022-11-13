@@ -26,8 +26,6 @@ export default function Results() {
                 console.log(res)
                 setCourse(res.course)
                 setProf(res.prof)
-            }).catch(() => {
-                console.log("no")
             })
         }
     }, [query])
