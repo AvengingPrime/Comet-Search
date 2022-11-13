@@ -4,7 +4,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-async function call_nebula(url) {
+export async function call_nebula(url) {
     let response = await fetch(url, {
         method: "GET",
         headers: {
@@ -17,7 +17,7 @@ async function call_nebula(url) {
     return data;
 };
 
-async function getCoursesAndProfs(query) {
+export async function getCoursesAndProfs(query) {
     const query_extraction = keyword_extractor.extract(query, {
         language: "english",
         remove_digits: false,
@@ -93,6 +93,7 @@ async function getCoursesAndProfs(query) {
     }*/
 
     //Course prefix + number search
+    
     let course_output = null
 
     for (let i = 0; i < query_extraction.length - 1; i++) {
@@ -134,5 +135,3 @@ async function getCoursesAndProfs(query) {
 
     return { prof: professor_output, course: course_output }
 }
-
-export default getCoursesAndProfs

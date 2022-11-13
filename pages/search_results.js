@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar.jsx'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import getCoursesAndProfs from '../nebula-search'
+import { getCoursesAndProfs } from '../nebula-search'
 import { ResultType, NebulaResultCard } from '../components/NebulaResultCard'
 import Link from 'next/link'
 
