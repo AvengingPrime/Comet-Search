@@ -43,7 +43,7 @@ a {
 }
 
 .results-title *:not(.comet) {
-    color: white;
+    color: black;
 }
 
 .results-main {
@@ -54,8 +54,15 @@ a {
 
 .nebula-result-card {
     padding: 1rem;
-    background: linear-gradient(150deg, rgb(50, 50, 50) 60%, rgb(40, 40, 40));
+    background: linear-gradient(150deg, rgb(80, 80, 80) 60%, rgb(55, 55, 55));
     border-radius: 1rem;
+    color: white;
+    min-width: 100%;
+}
+
+.nebula-course-card-section {
+    display: grid;
+    grid-template-columns: 10% 40% 50%;
 }
 
 .nebula-course-card-title {
@@ -65,7 +72,11 @@ a {
     text-align: center;
 }
 
-@media (prefers-color-scheme: dark) {
+.nebula-prof-card-head {
+    display: flex;
+}
+
+@media (prefers-color-scheme: light) {
   html {
     color-scheme: dark;
   }
