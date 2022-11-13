@@ -4,7 +4,11 @@ nlp = spacy.load('en_core_web_lg')
 import praw
 from flask import Flask
 from flask import jsonify
+from flask_cors import CORS
+
 app = Flask(__name__)
+
+CORS(app)
 
 reddit = praw.Reddit(
     client_id = 'b74ZiwXVctbx1alAwQkicw',
@@ -31,7 +35,7 @@ def fetchNewRedditData():
     utdReddit = reddit.subreddit('utdallas')
     newPosts = utdReddit.new(limit = 10)
     count = 0
-    allPosts = pickle.load(open('posts2.pb', mode= 'rb'))
+    allPosts = pickle.load(open('C:/Users/Vivian/Coding/HackUTD/Comet-Search/test/reddit-api/posts.pb', mode= 'rb'))
     posts = {}
     
     for submission in newPosts:
@@ -63,14 +67,14 @@ def fetchNewRedditData():
     
     allPosts.update(posts)
     
-    pickle.dump(allPosts, open("posts2.pb", mode='wb'))
+    pickle.dump(allPosts, open("C:/Users/Vivian/Coding/HackUTD/Comet-Search/test/reddit-api/posts.pb", mode='wb'))
     
     return allPosts
 
 @app.route('/query/<query>')
 def getPosts(query):
     query= ' '.join(query.split('-'))
-    posts = pickle.load(open("posts2.pb", mode='rb'))
+    posts = pickle.load(open("C:/Users/Vivian/Coding/HackUTD/Comet-Search/test/reddit-api/posts.pb", mode='rb'))
     qry = nlp(query)
     # posts = pickle.load(open('posts.pb', mode= 'rb'))
     similarity = {0 : [None, 0], 1: [None, 0], 2:[None, 0]}
@@ -100,7 +104,7 @@ def hello():
 
 @app.route("/query")
 def allPosts():
-    posts = pickle.load(open('posts2.pb', mode= 'rb'))
+    posts = pickle.load(open('C:/Users/Vivian/Coding/HackUTD/Comet-Search/test/reddit-api/posts.pb', mode= 'rb'))
     return jsonify({'posts' : posts})
 
 if __name__ == "__main__":
