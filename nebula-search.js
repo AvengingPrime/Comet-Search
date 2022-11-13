@@ -19,7 +19,7 @@ async function main() {
 
   const keyword_extractor = require("keyword-extractor")
 
-  query = "is math 2417 hard"
+  query = "is acct 2301  hard"
 
   const query_extraction =
   keyword_extractor.extract(query,{
@@ -58,13 +58,13 @@ async function main() {
     }
 
   //Check last name
-  if (professor_output = null){
+  if (professor_output == null){
     for (let i = 0; i < query_extraction.length; i++) {
       first_keyword = query_extraction[i]
 
       first_keyword = capitalizeFirstLetter(first_keyword)
 
-      professor_params = { first_name: first_keyword};
+      professor_params = { last_name: first_keyword};
       professor_search_params = new URLSearchParams(professor_params);
       professor_url = 'https://api.utdnebula.com/professor/?' + professor_search_params.toString()
 
@@ -80,20 +80,17 @@ async function main() {
 
   console.log(professor_output)
 
-  /* Get professor's classes
-  course_sections = course_output[0].sections
-  course_internal_class_number = course_output[0].internal_course_number	
+  // Get professor's classes
+  if (professor_output != null) {
+    course_sections = professor_output[0].sections
 
-  for (let i = 0; i < course_sections.length; i++) {
-    section_params = { internal_class_number: course_internal_class_number};
-    section_search_params = new URLSearchParams(section_params);
-    section_url = 'https://api.utdnebula.com/section/?' + section_search_params.toString()
+    section_url = 'https://api.utdnebula.com/section/' + course_sections[i]
+    console.log(section_url)
 
     section_call_nebula = await call_nebula(section_url)
     section_output = section_call_nebula.data
     console.log(section_output)
-  }*/
-
+  }
   //Course prefix + number search
   course_output = null
 
@@ -119,19 +116,22 @@ async function main() {
 
   console.log(course_output)
 
-  /* Get course sections
-  course_sections = course_output[0].sections
-  course_internal_class_number = course_output[0].internal_course_number	
+  // Get course sections
+  //Does not work - there doesn't appear to be a link between the course endpoint and session endpoint
+  /*if (course_output != null) {
+    course_id = course_output[0]._id
 
-  for (let i = 0; i < course_sections.length; i++) {
-    section_params = { internal_class_number: course_internal_class_number};
+    section_params = { course_reference: course_id};
     section_search_params = new URLSearchParams(section_params);
     section_url = 'https://api.utdnebula.com/section/?' + section_search_params.toString()
+
+    console.log(section_url)
 
     section_call_nebula = await call_nebula(section_url)
     section_output = section_call_nebula.data
     console.log(section_output)
   }*/
+
 }
 
 
