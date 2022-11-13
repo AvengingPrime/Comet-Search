@@ -15,6 +15,22 @@ a {
   box-sizing: border-box;
 }
 
+.comet {
+    color: orange;
+    text-decoration: none;
+}
+
+.search-bar-form input {
+    width: 50vw;
+    margin: 1em;
+    height: 1.5em;
+    font-size: 1.2em;
+    border-radius: .2em;
+    box-shadow: none;
+    border: 2px solid gray;
+    padding: 1em;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
