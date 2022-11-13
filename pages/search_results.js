@@ -6,7 +6,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { getCoursesAndProfs } from '../nebula-search'
-import { ResultType, NebulaResultCard } from '../components/NebulaResultCard'
+import { ResultType, NebulaResultCard } from '../components/NebulaResultCard.jsx'
+import GuideCard from '../components/GuideCard.jsx'
 import Link from 'next/link'
 import JupiterCard from '../components/JupiterCard.jsx'
 import nebulaLogo from '../styles/nebula.png'
@@ -63,7 +64,7 @@ export default function Results() {
                         {
                             prof && <NebulaResultCard resultType={ResultType.PROF} data={prof} />
                         }
-                        {/* <JupiterCard
+                        <JupiterCard
                             orgs = {
                                 [
                                     {name: "Nebula", url: "https://discord.gg/afdRbJY9", logo: nebulaLogo, description: "We're a Community of open source developers making student focused products"},
@@ -80,7 +81,7 @@ export default function Results() {
                                     {name: "How and why you should worship our holy saviour TEMOC", text: "'Just Because'"},
                                 ]
                             }
-                        /> */}
+                        />
                     </div>
                 </div>
             </main>
