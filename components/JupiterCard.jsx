@@ -1,17 +1,20 @@
 import React from 'react'
-import {Header, Icon, Button, Segment, Image} from 'semantic-ui-react'
+import {Container, Header, Icon, Button, Segment, Image} from 'semantic-ui-react'
 
 export default function JupiterCard(props)
 {
     const orgs = props.orgs
-    
+
     return (
         <Segment.Group>
             {orgs.map((org) => (
                 <Segment key = {org}>
                     <Header>
-                        <Image circular src = {org.image} href = 'https://dev.jupiter.utdnebula.com/directory'/> {org.name}
+                        <Image circular src = {org.logo} href = 'https://dev.jupiter.utdnebula.com/directory'/> {org.name}
                     </Header>
+                    {/* <Container> */}
+                    {org.description}<br/><br/>
+                    {/* </Container> */}
                     <Button 
                         icon labelPosition='left' 
                         href = {org.url}>
