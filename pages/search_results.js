@@ -63,7 +63,7 @@ export default function Results() {
                         {
                             prof && <NebulaResultCard resultType={ResultType.PROF} data={prof} />
                         }
-                        <JupiterCard
+                        {/* <JupiterCard
                             orgs = {
                                 [
                                     {name: "Nebula", url: "https://discord.gg/afdRbJY9", logo: nebulaLogo, description: "We're a Community of open source developers making student focused products"},
@@ -80,7 +80,7 @@ export default function Results() {
                                     {name: "How and why you should worship our holy saviour TEMOC", text: "'Just Because'"},
                                 ]
                             }
-                        />
+                        /> */}
                     </div>
                 </div>
             </main>

@@ -52,6 +52,19 @@ a {
     gap: 2rem;
 }
 
+.nebula-result-card {
+    padding: 1rem;
+    background: linear-gradient(150deg, rgb(50, 50, 50) 60%, rgb(40, 40, 40));
+    border-radius: 1rem;
+}
+
+.nebula-course-card-title {
+    font-size: 2rem;
+    font-style: bold;
+    margin: .5rem auto .5rem auto;
+    text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
