@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 import { getCoursesAndProfs } from '../nebula-search'
 import { ResultType, NebulaResultCard } from '../components/NebulaResultCard'
 import Link from 'next/link'
+import {JupiterCard} from '../components/JupiterCard.jsx'
+import nebulaLogo from '../public/Images/nebula.png'
 
 export default function Results() {
     const [query, setQuery] = useState('')
@@ -60,6 +62,15 @@ export default function Results() {
                         {
                             prof && <NebulaResultCard resultType={ResultType.PROF} data={prof} />
                         }
+                        <JupiterCard
+                            orgs = {
+                                [
+                                    {name: "Nebula", url: "https://discord.gg/uW7zuXbmJt", logo: nebulaLogo},
+                                    {name: "ACM", url: "https://discord.gg/kJmvgTnt", logo: nebulaLogo},
+                                    {name: "AIS", url: "https://discord.gg/xyW9mvTJ", logo: nebulaLogo},
+                                ]
+                            }
+                        />
                     </div>
                 </div>
             </main>
