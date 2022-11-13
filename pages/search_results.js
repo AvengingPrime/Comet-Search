@@ -12,6 +12,7 @@ import Link from 'next/link'
 import JupiterCard from '../components/JupiterCard.jsx'
 import nebulaLogo from '../styles/nebula.png'
 import 'semantic-ui-css/semantic.min.css'
+import RedditCard from '../components/RedditCard.jsx'
 
 export default function Results() {
     const [query, setQuery] = useState('')
@@ -55,7 +56,14 @@ export default function Results() {
             <main className={styles.main}>
                 <div className="results-main">
                     <div className="results-left-pane">
-
+                    <RedditCard
+                        posts = {
+                            [
+                                {title: "What classes to take?", comments: ["any", "whichever you want"]},
+                                {title: "Should I join Nebula", comments: ["Yes", "Definitely"]},
+                            ]
+                        }
+                    />
                     </div>
                     <div className="results-right-pane">
                         {
