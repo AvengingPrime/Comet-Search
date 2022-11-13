@@ -10,7 +10,7 @@ export default function GuideCard(props)
             {articles.map((article) => (
                 <Segment key = {article}>
                     <Header href = 'https://dev.guide.utdnebula.com/'>
-                        {article.title}
+                        {article.title}<br/><br/>
                     </Header>
                     {/* <Container> */}
                     {article.text}<br/><br/>

@@ -77,8 +77,8 @@ export default function Results() {
                             articles = {
                                 [
                                     {title: "How to get Started at UTD", text: "'Get admitted'"},
-                                    {name: "How to ace your exams", text: "'Dont be dumb'"},
-                                    {name: "How and why you should worship our holy saviour TEMOC", text: "'Just Because'"},
+                                    {title: "How to ace your exams", text: "'Dont be dumb'"},
+                                    {title: "How and why you should worship our holy saviour TEMOC", text: "'Just Because'"},
                                 ]
                             }
                         />
