@@ -80,6 +80,20 @@ async function main() {
 
   console.log(professor_output)
 
+  /* Get professor's classes
+  course_sections = course_output[0].sections
+  course_internal_class_number = course_output[0].internal_course_number	
+
+  for (let i = 0; i < course_sections.length; i++) {
+    section_params = { internal_class_number: course_internal_class_number};
+    section_search_params = new URLSearchParams(section_params);
+    section_url = 'https://api.utdnebula.com/section/?' + section_search_params.toString()
+
+    section_call_nebula = await call_nebula(section_url)
+    section_output = section_call_nebula.data
+    console.log(section_output)
+  }*/
+
   //Course prefix + number search
   course_output = null
 
@@ -104,6 +118,20 @@ async function main() {
   }
 
   console.log(course_output)
+
+  /* Get course sections
+  course_sections = course_output[0].sections
+  course_internal_class_number = course_output[0].internal_course_number	
+
+  for (let i = 0; i < course_sections.length; i++) {
+    section_params = { internal_class_number: course_internal_class_number};
+    section_search_params = new URLSearchParams(section_params);
+    section_url = 'https://api.utdnebula.com/section/?' + section_search_params.toString()
+
+    section_call_nebula = await call_nebula(section_url)
+    section_output = section_call_nebula.data
+    console.log(section_output)
+  }*/
 }
 
 
