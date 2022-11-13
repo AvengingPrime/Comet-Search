@@ -19,7 +19,7 @@ async function main() {
 
   const keyword_extractor = require("keyword-extractor")
 
-  query = "is barden a hard grader"
+  query = "is acct 2301 a hard class"
 
   const query_extraction =
   keyword_extractor.extract(query,{
@@ -82,15 +82,15 @@ async function main() {
 
   // Get professor's classes
   if (professor_output != null) {
-    course_sections = professor_output[0].sections
+    professor_course_sections = professor_output[0].sections
     
     for (let i = 0; i < course_sections.length; i++) {
-      section_url = 'https://api.utdnebula.com/section/' + course_sections[i]
+      section_url = 'https://api.utdnebula.com/section/' + professor_course_sections[i]
       console.log(section_url)
 
       section_call_nebula = await call_nebula(section_url)
-      section_output = section_call_nebula.data
-      console.log(section_output)
+      professor_section_output = section_call_nebula.data
+      console.log(professor_section_output)
     }
   }
 
@@ -120,20 +120,18 @@ async function main() {
   console.log(course_output)
 
   // Get course sections
-  //Does not work - there doesn't appear to be a link between the course endpoint and session endpoint
-  /*if (course_output != null) {
-    course_id = course_output[0]._id
+  if (course_output != null) {
+    course_sections = course_output[0].sections
+    
+    for (let i = 0; i < course_sections.length; i++) {
+      section_url = 'https://api.utdnebula.com/section/' + course_sections[i]
+      console.log(section_url)
 
-    section_params = { course_reference: course_id};
-    section_search_params = new URLSearchParams(section_params);
-    section_url = 'https://api.utdnebula.com/section/?' + section_search_params.toString()
-
-    console.log(section_url)
-
-    section_call_nebula = await call_nebula(section_url)
-    section_output = section_call_nebula.data
-    console.log(section_output)
-  }*/
+      section_call_nebula = await call_nebula(section_url)
+      course_section_output = section_call_nebula.data
+      console.log(course_section_output)
+    }
+  }
 
 }
 
