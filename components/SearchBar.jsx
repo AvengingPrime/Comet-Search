@@ -13,7 +13,7 @@ const SearchBar = props => {
 
     const handleFormSubmit = () => {
         router.push(
-            { pathname: "/search_results", query: { query: query } },
+            { pathname: "/search_results", query: { query } },
             "/search_results/" + query.replace(/\s/g, '_')
         );
     }
